@@ -22,22 +22,28 @@
         </script>
         <style>
             .xlstable .selected{
-                background:black !important;
+                background:blue !important;
                 color:white !important;
+                border:none;
             }
 
-            body{
-                margin:0;
-                padding:0;
+            *{
+                padding:0px;
+                margin:0px;
             }
 
-            .xlstable{
+            .xlstable{ 
+                box-shadow:1px 1px 2px #888;
+                border:1px solid black;
+                top:100px;
+                left:100px;
                 border-collapse: collapse;
                 display:block;
                 width:400px;
                 height:200px;
                 overflow:hidden;
                 position: relative;
+                table-layout: fixed;
             }
 
             .xlstable thead{
@@ -46,23 +52,25 @@
             }
 
             .xlstable tbody{
+                border-top:1px solid black;
                 height:calc(100% - 30px);
                 position: relative;
                 display:block;
                 overflow:scroll;
             }
 
-            .xlstable th:nth-child(1), .xlstable td:nth-child(1){
-                z-index:999;
-            }
-
-            .xlstable td{                
-                cursor:pointer;
+            .xlstable td:nth-child(1), .xlstable th:nth-child(1){
+                border-right:1px solid black;
+                display:block;
+                z-index:900;
+                margin:0 !important;
+                padding:0 !important;
+                border-collapse: collapse !important;
             }
 
             .xlstable td:hover{
-                border:1px solid #ccc;
-                opacity:.7;
+                cursor:pointer;
+                background:#ccc !important;
             }
 
             .xlstable tr:nth-child(odd), .xlstable tr:nth-child(odd) td,.xlstable tr:nth-child(odd)  th{
@@ -77,8 +85,8 @@
                 text-align:center;
                 vertical-align: middle;
                 position: relative;
-                min-width:60px;
-                height:20px;
+                min-width:100px;
+                line-height:30px;
             }
         </style>
     </head>
@@ -86,7 +94,7 @@
         <table class='xlstable'>
             <thead>
                 <tr>
-                    <th></th>
+                    <th>&nbsp;</th>
                     <th>A</th>
                     <th>B</th>
                     <th>C</th>
