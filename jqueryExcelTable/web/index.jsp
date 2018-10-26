@@ -7,21 +7,21 @@
         <title>JSP Page</title>
         <script>
             $(function () {
-                $("tbody").on("scroll", function () {
-                    $("thead").css("left", -$(this).scrollLeft() + "px");
+                $(".xlstable tbody").on("scroll", function () {
+                    $(".xlstable thead").css("left", -$(this).scrollLeft() + "px");
                     $(this).find("tr td:nth-child(1)").css("left", $(this).scrollLeft());
-                    $("thead").find("tr th:nth-child(1)").css("left", $(this).scrollLeft());
+                    $(".xlstable thead").find("tr th:nth-child(1)").css("left", $(this).scrollLeft());
                 });
 
-                $("td").on("mouseover", function () {
-                    $(".selected").removeClass("selected");
-                    $("thead th").eq($(this).parents("tr").eq(0).find("td").index(this)).addClass("selected");
+                $(".xlstable td").on("mouseover", function () {
+                    $(".xlstable .selected").removeClass("selected");
+                    $(".xlstable thead th").eq($(this).parents("tr").eq(0).find("td").index(this)).addClass("selected");
                     $(this).parents("tr").eq(0).find("td:first").addClass("selected");
                 });
             });
         </script>
         <style>
-            .selected{
+            .xlstable .selected{
                 background:black !important;
                 color:white !important;
             }
@@ -31,7 +31,7 @@
                 padding:0;
             }
 
-            table{
+            .xlstable{
                 border-collapse: collapse;
                 display:block;
                 width:400px;
@@ -40,47 +40,40 @@
                 position: relative;
             }
 
-            thead{
+            .xlstable thead{
                 position: relative;
                 display:block;
             }
 
-            tbody{
+            .xlstable tbody{
                 height:calc(100% - 30px);
                 position: relative;
                 display:block;
                 overflow:scroll;
             }
 
-            th:nth-child(1), td:nth-child(1){
+            .xlstable th:nth-child(1), .xlstable td:nth-child(1){
                 z-index:999;
             }
 
-            td{                
+            .xlstable td{                
                 cursor:pointer;
             }
-            td:hover{
+
+            .xlstable td:hover{
                 border:1px solid #ccc;
                 opacity:.7;
             }
 
-            tr:nth-child(odd){
+            .xlstable tr:nth-child(odd), .xlstable tr:nth-child(odd) td,.xlstable tr:nth-child(odd)  th{
                 background:#eee;
             }
 
-            tr:nth-child(odd) td, th{
-                background:#eee;
-            }
-
-            tr:nth-child(even){
+            .xlstable tr:nth-child(even), .xlstable tr:nth-child(even) td, .xlstable tr:nth-child(even) th{
                 background:white;
             }
 
-            tr:nth-child(even) td, th{
-                background:white;
-            }
-
-            th, td{
+            .xlstable th, .xlstable td{
                 text-align:center;
                 vertical-align: middle;
                 position: relative;
@@ -90,7 +83,7 @@
         </style>
     </head>
     <body>
-        <table>
+        <table class='xlstable'>
             <thead>
                 <tr>
                     <th></th>
